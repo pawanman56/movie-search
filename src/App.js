@@ -47,7 +47,7 @@ class App extends Component {
     if(this.state.error) {
       return (
         <div className='error-message'>
-          <span>Something went wrong</span>
+          <span>Oops! Something went wrong</span>
         </div>
       )
     }
@@ -56,7 +56,7 @@ class App extends Component {
   render() {
     let displayMovieResults = this.state.searchResult.map((movie) => {
       return (
-        <div key={movie.id}>
+        <div key={movie.id} className="movie-list">
           <span>Movie: {movie.title}</span>
           <img src={"https://image.tmdb.org/t/p/w300" + movie.poster_path} alt={movie.title}/>
         </div>
@@ -73,7 +73,10 @@ class App extends Component {
           <input type='button' value='Search' onClick={this.movieSearch}/>
         </div>
         { this.errorMessage() }
-        { displayMovieResults }
+
+        <div className="movie-results">
+          { displayMovieResults }
+        </div>
       </div>
     );
   }
